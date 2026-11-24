@@ -8,7 +8,6 @@ import { Icons } from "./icons";
 const nav = [
   { href: "/products", label: "Shop parts" },
   { href: "/#services", label: "Services" },
-  { href: "/#brands", label: "Brands" },
   { href: "/#about", label: "About" },
   { href: "/#contact", label: "Contact" },
 ];
@@ -34,12 +33,12 @@ export function Header() {
         }`}
       >
         <div
-          className={`mx-auto flex max-w-7xl items-center justify-between px-4 transition-all duration-500 ${
+          className={`flex w-full items-center justify-between gap-6 px-4 sm:px-6 lg:grid lg:px-8 lg:grid-cols-[1fr_auto_1fr] transition-all duration-500 ${
             scrolled ? "h-16" : "h-20"
           }`}
         >
-          <Link href="/" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
-            <span className="flex h-10 w-10 items-center justify-center rounded-sm bg-hivis font-display text-sm font-extrabold tracking-tight text-ink transition-transform duration-500 group-hover:rotate-[-6deg]">
+          <Link href="/" className="group flex items-center gap-3 justify-self-start" onClick={() => setOpen(false)}>
+            <span className="flex h-10 w-10 items-center justify-center rounded-sm bg-brand font-display text-sm font-extrabold tracking-tight text-white transition-transform duration-500 group-hover:rotate-[-6deg]">
               JEC
             </span>
             <span className="leading-tight">
@@ -53,15 +52,15 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="group relative px-4 py-2 text-[15px] font-medium text-white/80 transition-colors hover:text-white"
+                className="group relative px-4 py-2 whitespace-nowrap text-[15px] font-medium text-white/80 transition-colors hover:text-white"
               >
                 {item.label}
-                <span className="absolute inset-x-4 -bottom-0.5 h-px origin-left scale-x-0 bg-hivis transition-transform duration-300 group-hover:scale-x-100" />
+                <span className="absolute inset-x-4 -bottom-0.5 h-px origin-left scale-x-0 bg-brand transition-transform duration-300 group-hover:scale-x-100" />
               </Link>
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 justify-self-end">
             <a href={telHref(company.phones[0])} className="btn-primary hidden !py-2.5 sm:inline-flex">
               <Icons.phone className="h-4 w-4" />
               {company.phones[0]}
@@ -93,7 +92,7 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className={`border-b border-white/10 py-4 font-display text-2xl font-semibold tracking-tight transition-all duration-500 hover:text-hivis ${
+                  className={`border-b border-white/10 py-4 font-display text-2xl font-semibold tracking-tight transition-all duration-500 hover:text-brand-light ${
                     open ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
                   }`}
                   style={{ transitionDelay: open ? `${80 + i * 50}ms` : "0ms" }}

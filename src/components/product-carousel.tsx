@@ -39,7 +39,7 @@ export function ProductCarousel({ products }: { products: Product[] }) {
   };
 
   const btn =
-    "flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 text-ink transition-all duration-300 hover:border-ink hover:bg-ink hover:text-white disabled:pointer-events-none disabled:opacity-30";
+    "flex h-11 w-11 items-center justify-center rounded-sm border border-ink/15 text-ink transition-all duration-300 hover:border-ink hover:bg-ink hover:text-white disabled:pointer-events-none disabled:opacity-30";
 
   return (
     <div className="mt-10">

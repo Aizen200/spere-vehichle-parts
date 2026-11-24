@@ -25,9 +25,9 @@ export function EnquiryForm({ defaultPart = "" }: { defaultPart?: string }) {
   }
 
   const field =
-    "peer w-full rounded-sm border border-white/12 bg-white/[0.04] px-4 pt-6 pb-2 text-white outline-none transition-colors placeholder:text-transparent focus:border-hivis focus:bg-white/[0.06]";
+    "peer w-full rounded-sm border border-white/12 bg-white/[0.04] px-4 pt-6 pb-2 text-white outline-none transition-colors placeholder:text-transparent focus:border-brand focus:bg-white/[0.06]";
   const label =
-    "pointer-events-none absolute top-4 left-4 text-sm text-white/45 transition-all duration-200 peer-focus:top-2 peer-focus:text-[11px] peer-focus:text-hivis peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:text-[11px]";
+    "pointer-events-none absolute top-4 left-4 text-sm text-white/45 transition-all duration-200 peer-focus:top-2 peer-focus:text-[11px] peer-focus:text-brand peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:text-[11px]";
 
   const inputs = [
     { name: "name", label: "Your name", required: true },

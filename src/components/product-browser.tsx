@@ -3,7 +3,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { categories, products } from "@/data/products";
-import { ProductCard } from "./product-card";
+import { ShowcaseCard } from "./category-showcase";
+import { Icons } from "./icons";
 
 const ALL = "All parts";
 
@@ -56,116 +57,114 @@ export function ProductBrowser() {
 
   const filtered = active !== ALL || query.trim() !== "";
 
+  const count = visible.length;
+
   return (
-    <div>
-      <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-[0_1px_2px_rgba(11,12,14,0.04)]">
-        {/* Search row */}
-        <div className="flex flex-col gap-3 p-3 sm:flex-row sm:items-center sm:gap-4 sm:p-4">
-          <label className="group relative flex flex-1 items-center">
-            <span className="sr-only">Search parts</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="pointer-events-none absolute left-4 h-4.5 w-4.5 text-steel transition-colors group-focus-within:text-ink" aria-hidden>
-              <circle cx="11" cy="11" r="7" />
-              <path d="m20 20-3.5-3.5" strokeLinecap="round" />
-            </svg>
-            <input
-              ref={inputRef}
-              type="search"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search by part name, SKU or spec…"
-              className="w-full rounded-xl bg-paper py-3.5 pr-20 pl-11 text-[15px] transition-all outline-none placeholder:text-steel/80 focus:bg-white focus:ring-2 focus:ring-ink [&::-webkit-search-cancel-button]:hidden"
-            />
-            {query ? (
-              <button
-                type="button"
-                onClick={() => {
-                  setQuery("");
-                  inputRef.current?.focus();
-                }}
-                className="absolute right-3 rounded-md px-2 py-1 text-xs font-medium text-steel transition-colors hover:bg-mist hover:text-ink"
-              >
-                Clear
-              </button>
-            ) : (
-              <kbd className="pointer-events-none absolute right-3 hidden rounded-md border border-line bg-white px-2 py-0.5 font-sans text-xs text-steel sm:block">
-                /
-              </kbd>
-            )}
-          </label>
-
-          <div className="flex items-center justify-between gap-4 px-1 sm:justify-end">
-            <p className="text-sm whitespace-nowrap text-steel" aria-live="polite">
-              <span className="font-display text-xl font-semibold tracking-tight text-ink tabular-nums">{visible.length}</span>
-              <span className="mx-1">/</span>
-              {products.length} parts
-            </p>
-            {filtered && (
-              <button
-                type="button"
-                onClick={() => {
-                  setQuery("");
-                  setCategory(ALL);
-                }}
-                className="text-sm font-medium whitespace-nowrap text-ink underline decoration-ink/20 underline-offset-4 transition-colors hover:decoration-ink"
-              >
-                Reset
-              </button>
-            )}
-          </div>
-        </div>
-
-        {/* Category strip */}
-        <div className="relative border-t border-line">
-          <div className="flex gap-1 overflow-x-auto px-3 py-3 [scrollbar-width:none] sm:px-4 [&::-webkit-scrollbar]:hidden" role="tablist" aria-label="Filter by category">
-            {[ALL, ...categories].map((c) => {
-              const isActive = active === c;
-              return (
+    <div className="grid gap-10 lg:grid-cols-[17.5rem_1fr] lg:gap-10">
+      {/* Category list */}
+      <aside className="lg:sticky lg:top-24 lg:self-start">
+        <label className="group relative flex items-center">
+          <span className="sr-only">Search parts</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="pointer-events-none absolute left-4 h-4.5 w-4.5 text-steel transition-colors group-focus-within:text-ink" aria-hidden>
+            <circle cx="11" cy="11" r="7" />
+            <path d="m20 20-3.5-3.5" strokeLinecap="round" />
+          </svg>
+          <input
+            ref={inputRef}
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search part, SKU or spec…"
+            className="h-13 w-full rounded-lg border border-line bg-white pr-12 pl-11 text-[15px] transition-all outline-none placeholder:text-steel/80 focus:border-ink focus:ring-1 focus:ring-ink [&::-webkit-search-cancel-button]:hidden"
+          />
+          {query ? (
+            <button
+              type="button"
+              onClick={() => {
+                setQuery("");
+                inputRef.current?.focus();
+              }}
+              className="absolute right-3 rounded-md px-2 py-1 text-xs font-medium text-steel transition-colors hover:bg-mist hover:text-ink"
+            >
+              Clear
+            </button>
+          ) : (
+            <kbd className="pointer-events-none absolute right-3 hidden rounded-md border border-line bg-white px-2 py-0.5 font-sans text-xs text-steel sm:block">
+              /
+            </kbd>
+          )}
+        </label>
+        <p className="mt-8 text-sm font-medium text-steel">Categories</p>
+        <ul
+          role="tablist"
+          aria-label="Filter by category"
+          className="mt-4 flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] lg:flex-col lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden"
+        >
+          {[ALL, ...categories].map((c) => {
+            const selected = active === c;
+            return (
+              <li key={c} className="shrink-0">
                 <button
-                  key={c}
                   type="button"
                   role="tab"
-                  aria-selected={isActive}
+                  aria-selected={selected}
                   onClick={() => setCategory(c)}
-                  className={`group flex shrink-0 items-center gap-2 rounded-lg py-2 pr-2 pl-3.5 text-sm font-medium transition-all duration-300 ${
-                    isActive ? "bg-ink text-white" : "text-ink/70 hover:bg-mist hover:text-ink"
+                  className={`flex w-full items-center justify-between gap-4 h-13 rounded-lg px-4 text-left text-[15px] font-medium whitespace-nowrap transition-colors duration-200 lg:px-5 ${
+                    selected ? "bg-ink text-white" : "bg-mist text-ink hover:bg-line"
                   }`}
                 >
-                  {c}
-                  <span
-                    className={`min-w-6 rounded-md px-1.5 py-0.5 text-center text-[11px] font-semibold tabular-nums transition-colors ${
-                      isActive ? "bg-hivis text-ink" : "bg-mist text-steel group-hover:bg-white"
-                    }`}
-                  >
-                    {counts[c] ?? 0}
-                  </span>
+                  <span>{c}</span>
+                  <span className={`text-sm tabular-nums ${selected ? "text-white/80" : "text-steel"}`}>{counts[c] ?? 0}</span>
                 </button>
-              );
-            })}
-          </div>
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-linear-to-l from-white to-transparent" aria-hidden />
-        </div>
-      </div>
+              </li>
+            );
+          })}
+        </ul>
+      </aside>
 
-      {visible.length > 0 ? (
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {visible.map((p, i) => (
-            <div
-              key={`${active}-${p.slug}`}
-              className="fade-up"
-              style={{ "--d": `${Math.min(i, 8) * 60}ms` } as React.CSSProperties}
-            >
-              <ProductCard product={p} />
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className="mt-8 rounded-2xl border border-line bg-white p-12 text-center">
-          <p className="font-display text-2xl font-semibold tracking-tight">No parts match your search</p>
-          <p className="mt-2 text-steel">
-            We stock far more than what&apos;s listed here. Call us with your part number.
+      {/* Results */}
+      <div role="tabpanel" aria-label={active}>
+        <div className="flex items-center justify-between gap-4">
+          <p className="text-sm font-medium text-steel" aria-live="polite">
+            {active} · {count} {count === 1 ? "part" : "parts"}
+            {query.trim() && <> matching “{query.trim()}”</>}
           </p>
+          {filtered && (
+            <button
+              type="button"
+              onClick={() => {
+                setQuery("");
+                setCategory(ALL);
+              }}
+              className="group inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-ink hover:text-brand"
+            >
+              See all {products.length}
+              <Icons.arrow className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+            </button>
+          )}
         </div>
-      )}
+
+        {count > 0 ? (
+          <div className="mt-4 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+            {visible.map((p, i) => (
+              <div
+                key={`${active}-${p.slug}`}
+                className="fade-up"
+                style={{ "--d": `${Math.min(i, 8) * 60}ms` } as React.CSSProperties}
+              >
+                <ShowcaseCard product={p} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="mt-4 rounded-2xl border border-line bg-mist/70 p-12 text-center">
+            <p className="font-display text-2xl font-semibold tracking-tight">No parts match your search</p>
+            <p className="mt-2 text-steel">
+              We stock far more than what&apos;s listed here. Call us with your part number.
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

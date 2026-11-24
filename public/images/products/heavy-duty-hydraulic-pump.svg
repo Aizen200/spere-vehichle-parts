@@ -7,11 +7,11 @@
   <linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#B9BEC4"/><stop offset=".55" stop-color="#8E949A"/><stop offset="1" stop-color="#EEF0F2"/></linearGradient>
   <linearGradient id="dark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#55595F"/><stop offset="1" stop-color="#1B1C1E"/></linearGradient>
   <linearGradient id="rubber" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3C3C3C"/><stop offset="1" stop-color="#121212"/></linearGradient>
-  <linearGradient id="yel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD84D"/><stop offset="1" stop-color="#EBA400"/></linearGradient>
-  <linearGradient id="yelX" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#B07800"/><stop offset=".35" stop-color="#FFDB5C"/><stop offset=".7" stop-color="#F2AE00"/><stop offset="1" stop-color="#8F6200"/></linearGradient>
+  <linearGradient id="yel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E3695E"/><stop offset="1" stop-color="#B0372D"/></linearGradient>
+  <linearGradient id="yelX" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8A2A22"/><stop offset=".35" stop-color="#E8766B"/><stop offset=".7" stop-color="#C8473D"/><stop offset="1" stop-color="#76231C"/></linearGradient>
   <radialGradient id="ball" cx="35%" cy="35%" r="70%"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="#A3A9AF"/><stop offset="1" stop-color="#454A50"/></radialGradient>
   <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#000" stroke-opacity=".045"/></pattern>
-  <pattern id="hz" width="36" height="36" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="36" height="36" fill="#FFC20E"/><rect width="18" height="36" fill="#111"/></pattern>
+  <pattern id="hz" width="36" height="36" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="36" height="36" fill="#FFFFFF"/><rect width="18" height="36" fill="#C8473D"/></pattern>
 </defs>
 <rect width="800" height="800" fill="url(#bg)"/>
 <ellipse cx="400" cy="660" rx="270" ry="34" fill="url(#shadow)"/>
@@ -25,7 +25,7 @@
 <path d="M486,330L497.7,336.1L496,345L482.9,346.5L479.8,353L486.9,364.1L481,371L468.9,365.7L463,369.8L463.6,383L455,386L447.2,375.4L440,376L433.9,387.7L425,386L423.5,372.9L417,369.8L405.9,376.9L399,371L404.3,358.9L400.2,353L387,353.6L384,345L394.6,337.2L394,330L382.3,323.9L384,315L397.1,313.5L400.2,307L393.1,295.9L399,289L411.1,294.3L417,290.2L416.4,277L425,274L432.8,284.6L440,284L446.1,272.3L455,274L456.5,287.1L463,290.2L474.1,283.1L481,289L475.7,301.1L479.8,307L493,306.4L496,315L485.4,322.8Z" fill="none" stroke="#3A3E43" stroke-opacity=".45" stroke-width="4"/>
 <path d="M486,470L497.7,476.1L496,485L482.9,486.5L479.8,493L486.9,504.1L481,511L468.9,505.7L463,509.8L463.6,523L455,526L447.2,515.4L440,516L433.9,527.7L425,526L423.5,512.9L417,509.8L405.9,516.9L399,511L404.3,498.9L400.2,493L387,493.6L384,485L394.6,477.2L394,470L382.3,463.9L384,455L397.1,453.5L400.2,447L393.1,435.9L399,429L411.1,434.3L417,430.2L416.4,417L425,414L432.8,424.6L440,424L446.1,412.3L455,414L456.5,427.1L463,430.2L474.1,423.1L481,429L475.7,441.1L479.8,447L493,446.4L496,455L485.4,462.8Z" fill="none" stroke="#3A3E43" stroke-opacity=".45" stroke-width="4"/>
 <rect x="590" y="270" width="44" height="260" rx="10" fill="url(#dark)"/>
-<rect x="598" y="378" width="28" height="44" fill="#FFC20E"/>
+<rect x="598" y="378" width="28" height="44" fill="#C8473D"/>
 <circle cx="320" cy="280" r="13" fill="#D3D7DB" stroke="#555" stroke-width="3"/><circle cx="560" cy="280" r="13" fill="#D3D7DB" stroke="#555" stroke-width="3"/><circle cx="320" cy="520" r="13" fill="#D3D7DB" stroke="#555" stroke-width="3"/><circle cx="560" cy="520" r="13" fill="#D3D7DB" stroke="#555" stroke-width="3"/>
 <rect x="410" y="200" width="60" height="55" fill="url(#steelX)"/><rect x="402" y="186" width="76" height="22" rx="6" fill="url(#yel)"/>
 <rect x="410" y="545" width="60" height="50" fill="url(#steelX)"/><rect x="402" y="590" width="76" height="22" rx="6" fill="url(#yel)"/>

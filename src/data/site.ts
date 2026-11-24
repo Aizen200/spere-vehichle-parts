@@ -26,38 +26,51 @@ export const services = [
   { title: "Operator Driving Training", body: "Safe-driving programmes for new and experienced forklift operators." },
 ];
 
-export const brands = [
-  "Toyota", "Doosan", "Mitsubishi", "Jungheinrich", "Linde", "KION",
-  "STILL", "HELI", "Hyundai", "Clark", "ACE", "Godrej",
+export type Brand = { name: string; logo: string };
+
+// Logo files live in public/images/brands.
+export const brands: Brand[] = [
+  { name: "Toyota", logo: "/images/brands/toyota.svg" },
+  { name: "Doosan", logo: "/images/brands/doosan.svg" },
+  { name: "Mitsubishi", logo: "/images/brands/mitsubishi.svg" },
+  { name: "Jungheinrich", logo: "/images/brands/jungheinrich.svg" },
+  { name: "Linde", logo: "/images/brands/linde.svg" },
+  { name: "KION", logo: "/images/brands/kion.svg" },
+  { name: "STILL", logo: "/images/brands/still.svg" },
+  { name: "HELI", logo: "/images/brands/heli.jpg" },
+  { name: "Hyundai", logo: "/images/brands/hyundai.svg" },
+  { name: "Clark", logo: "/images/brands/clark.jpg" },
+  { name: "ACE", logo: "/images/brands/ace.svg" },
+  { name: "Godrej", logo: "/images/brands/godrej.svg" },
 ];
 
-export type Client = { name: string; sector: string; logo?: string };
+export type Client = { name: string; sector: string; blurb: string; logo?: string };
 
 // Logos live in public/images/clients. Clients without a logo file show a typeset wordmark;
 // drop a file in and add the path here to replace it.
 export const clients: Client[] = [
-  { name: "Aditya Birla Group", sector: "Conglomerate" },
-  { name: "APAR", sector: "Cables & Conductors" },
-  { name: "Tata Motors", sector: "Automotive", logo: "/images/clients/tata-motors.png" },
-  { name: "BHEL", sector: "Heavy Engineering", logo: "/images/clients/bhel.svg" },
-  { name: "Shyam Metallics", sector: "Steel & Metals", logo: "/images/clients/shyam-metallics.png" },
-  { name: "Jindal Steel & Power", sector: "Steel & Power", logo: "/images/clients/jindal.svg" },
-  { name: "HEC", sector: "Heavy Engineering" },
-  { name: "Rail Wheel Factory", sector: "Indian Railways", logo: "/images/clients/rail-wheel-factory.svg" },
-  { name: "Department of Atomic Energy", sector: "Atomic Energy" },
-  { name: "BEML", sector: "Defence & Mining" },
-  { name: "KIOCL Limited", sector: "Mining" },
+  { name: "Aditya Birla Group", sector: "Conglomerate", blurb: "A global conglomerate spanning metals, cement, textiles and chemicals." },
+  { name: "APAR", sector: "Cables & Conductors", blurb: "One of the world's largest makers of conductors, cables and specialty oils." },
+  { name: "Tata Motors", sector: "Automotive", blurb: "India's leading maker of commercial and passenger vehicles.", logo: "/images/clients/tata-motors.png" },
+  { name: "BHEL", sector: "Heavy Engineering", blurb: "India's largest power-equipment manufacturer and engineering enterprise.", logo: "/images/clients/bhel.svg" },
+  { name: "Shyam Metallics", sector: "Steel & Metals", blurb: "An integrated producer of ferro alloys, steel and aluminium foil.", logo: "/images/clients/shyam-metallics.png" },
+  { name: "Jindal Steel & Power", sector: "Steel & Power", blurb: "A major Indian producer of steel and power, with mining operations.", logo: "/images/clients/jindal.svg" },
+  { name: "HEC", sector: "Heavy Engineering", blurb: "Heavy Engineering Corporation, building equipment for steel and mining." },
+  { name: "Rail Wheel Factory", sector: "Indian Railways", blurb: "Indian Railways' plant producing wheels and axles for rolling stock.", logo: "/images/clients/rail-wheel-factory.svg" },
+  { name: "Department of Atomic Energy", sector: "Atomic Energy", blurb: "The government department driving India's nuclear energy programme." },
+  { name: "BEML", sector: "Defence & Mining", blurb: "A defence PSU making mining, rail and earth-moving equipment." },
+  { name: "KIOCL Limited", sector: "Mining", blurb: "A government-owned iron ore mining and pelletisation company." },
 ];
 
 export const photos = {
-  hero: "/images/photos/warehouse.jpg",
+  hero: "/images/photos/forklift-hero.jpg",
   fleet: "/images/photos/fleet.jpg",
 };
 
 export const photoCredits = [
   {
-    label: "Warehouse by Axisadman, CC BY-SA 3.0",
-    href: "https://commons.wikimedia.org/wiki/File:Modern_warehouse_with_pallet_rack_storage_system.jpg",
+    label: "Forklift by Marc Auledas Noguera, CC BY 4.0",
+    href: "https://commons.wikimedia.org/wiki/File:Jungheinrich_forklift_in_a_builders_hardware_store_in_Girona.jpg",
   },
   {
     label: "Forklift fleet by Patricklorek, CC BY-SA 4.0",

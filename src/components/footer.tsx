@@ -5,18 +5,18 @@ import { categories } from "@/data/products";
 export function Footer() {
   return (
     <footer className="bg-ink text-white">
-      <div className="h-px bg-linear-to-r from-transparent via-hivis to-transparent" aria-hidden />
+      <div className="h-px bg-linear-to-r from-transparent via-brand to-transparent" aria-hidden />
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 md:grid-cols-12">
         <div className="md:col-span-5">
           <div className="flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-sm bg-hivis font-display text-sm font-extrabold text-ink">
+            <span className="flex h-10 w-10 items-center justify-center rounded-sm bg-brand font-display text-sm font-extrabold text-white">
               JEC
             </span>
             <span className="font-display text-lg font-semibold tracking-tight">{company.name}</span>
           </div>
           <p className="mt-5 max-w-sm leading-relaxed text-white/55">{company.tagline}</p>
-          <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1.5 text-xs text-white/60">
-            <span className="h-1.5 w-1.5 rounded-full bg-hivis" /> ISO 9001:2015 certified
+          <p className="mt-6 inline-flex items-center gap-2 rounded-sm border border-white/10 px-3 py-1.5 text-xs text-white/60">
+            <span className="h-1.5 w-1.5 rounded-full bg-brand" /> ISO 9001:2015 certified
           </p>
         </div>
         <div className="md:col-span-3">
@@ -24,7 +24,7 @@ export function Footer() {
           <ul className="mt-5 space-y-2.5 text-[15px] text-white/70">
             {categories.map((c) => (
               <li key={c}>
-                <Link href={`/products?category=${encodeURIComponent(c)}`} className="transition-colors hover:text-hivis">
+                <Link href={`/products?category=${encodeURIComponent(c)}`} className="transition-colors hover:text-brand-light">
                   {c}
                 </Link>
               </li>
@@ -36,12 +36,12 @@ export function Footer() {
           <ul className="mt-5 space-y-2.5 text-[15px] text-white/70">
             {company.phones.map((p) => (
               <li key={p}>
-                <a href={telHref(p)} className="transition-colors hover:text-hivis">{p}</a>
+                <a href={telHref(p)} className="transition-colors hover:text-brand-light">{p}</a>
               </li>
             ))}
             {company.emails.map((e) => (
               <li key={e}>
-                <a href={`mailto:${e}`} className="break-all transition-colors hover:text-hivis">{e}</a>
+                <a href={`mailto:${e}`} className="break-all transition-colors hover:text-brand-light">{e}</a>
               </li>
             ))}
           </ul>

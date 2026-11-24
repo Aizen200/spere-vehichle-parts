@@ -28,7 +28,7 @@ export default function ProductsPage() {
           <p className="fade-up mt-5 max-w-2xl text-lg leading-relaxed text-white/65" style={{ "--d": "300ms" } as React.CSSProperties}>
             Stocked parts for Toyota, Linde, Doosan, Godrej and more. Can&apos;t find your part? We stock far more than
             what&apos;s listed here —{" "}
-            <a href={telHref(company.phones[0])} className="text-white underline decoration-hivis underline-offset-4">
+            <a href={telHref(company.phones[0])} className="text-white underline decoration-brand underline-offset-4">
               call {company.phones[0]}
             </a>
             .

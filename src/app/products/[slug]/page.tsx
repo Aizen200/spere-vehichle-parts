@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { formatPrice, getProduct, imageFor, products } from "@/data/products";
-import { company, telHref, whatsappHref } from "@/data/site";
+import { galleryFor, getProduct, products } from "@/data/products";
+import { company, photos, telHref, whatsappHref } from "@/data/site";
+import { ProductGallery } from "@/components/product-gallery";
 import { ProductCard } from "@/components/product-card";
 import { Reveal } from "@/components/reveal";
 import { Icons } from "@/components/icons";
@@ -56,34 +56,17 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
 
       <section className="mx-auto grid max-w-7xl gap-10 px-4 py-10 lg:grid-cols-2 lg:gap-16 lg:py-16">
         <div className="fade-up lg:sticky lg:top-28 lg:self-start" style={d(0)}>
-          <div className="relative aspect-square overflow-hidden rounded-sm border border-line bg-mist">
-            <Image
-              src={imageFor(product.slug)}
-              alt={product.name}
-              fill
-              priority
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover transition-transform duration-700 hover:scale-105"
-            />
-          </div>
+          <ProductGallery product={product} views={galleryFor(product, photos.fleet)} />
         </div>
 
         <div>
           <div className="fade-up flex flex-wrap items-center gap-3" style={d(80)}>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-              {product.inStock ? "In stock" : "On order"}
-            </span>
             <span className="text-sm text-steel">{product.category}</span>
           </div>
           <h1 className="fade-up mt-4 font-display text-4xl leading-[1.05] font-semibold tracking-[-0.03em] sm:text-5xl" style={d(140)}>
             {product.name}
           </h1>
           <p className="fade-up mt-3 font-mono text-sm text-steel" style={d(180)}>SKU {product.sku}</p>
-          <div className="fade-up mt-8 flex items-baseline gap-3" style={d(240)}>
-            <p className="font-display text-4xl font-bold tracking-tight">{formatPrice(product.price)}</p>
-            <p className="text-sm text-steel">excl. GST &amp; shipping</p>
-          </div>
           <p className="fade-up mt-6 text-lg leading-relaxed text-ink/70" style={d(300)}>{product.summary}</p>
 
           <div className="fade-up mt-8 flex flex-col gap-3 sm:flex-row" style={d(360)}>
