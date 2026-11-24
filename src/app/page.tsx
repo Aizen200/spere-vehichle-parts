@@ -92,14 +92,8 @@ export default function Home() {
       </section>
 
       {/* BRANDS */}
-      <section id="brands" className="scroll-mt-20 border-b border-line bg-white py-14">
-        <div className="mx-auto max-w-7xl px-4">
-          <Reveal className="flex flex-col justify-between gap-2 sm:flex-row sm:items-end">
-            <p className="eyebrow">Complete stock of top forklift brands</p>
-            <p className="text-sm text-steel">Genuine &amp; OEM-equivalent parts</p>
-          </Reveal>
-        </div>
-        <div className="marquee relative mt-8 overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)]">
+      <section id="brands" aria-label="Forklift brands we stock" className="scroll-mt-20 border-b border-line bg-white py-10">
+        <div className="marquee relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)]">
           <div className="animate-marquee flex w-max">
             {[0, 1].map((dup) => (
               <ul key={dup} className="flex shrink-0 items-center" aria-hidden={dup === 1}>
