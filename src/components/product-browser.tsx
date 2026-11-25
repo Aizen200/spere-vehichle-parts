@@ -14,7 +14,7 @@ export function ProductBrowser() {
   const pathname = usePathname();
   const requested = searchParams.get("category");
   const active = requested && categories.includes(requested) ? requested : ALL;
-  const [query, setQuery] = useState(() => searchParams.get("q") ?? "");
+  const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
   const counts = useMemo(() => {

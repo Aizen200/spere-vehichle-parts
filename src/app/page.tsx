@@ -17,8 +17,6 @@ const stats = [
   { value: "Pan-India", label: "Field service" },
 ];
 
-const popular = ["Hydraulic System", "Wheels & Tyres", "Filters"];
-
 const heroProducts = ["heavy-duty-hydraulic-pump", "hydraulic-lift-cylinder", "industrial-solid-forklift-tyre"]
   .map(getProduct)
   .filter((p): p is Product => Boolean(p));
@@ -41,9 +39,6 @@ function HeroCard({ product, position, delay }: { product: Product; position: st
       >
         <div className="relative aspect-square overflow-hidden rounded-md bg-mist">
           <Image src={imageFor(product.slug)} alt="" fill sizes="300px" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-          <span className="absolute top-2 left-2 rounded-md bg-white px-2 py-0.5 font-mono text-[10px] text-ink/70 ring-1 ring-line">
-            {product.sku}
-          </span>
         </div>
         <div className="flex items-end justify-between gap-2 px-1.5 pt-3 pb-1">
           <div className="min-w-0">
@@ -87,45 +82,18 @@ export default function Home() {
               needs, from one trusted partner.
             </p>
 
-            <form action="/products" className="fade-up mt-8 max-w-xl" style={d(500)} role="search">
-              <label className="flex items-center gap-2 rounded-lg bg-white p-2 pl-4 shadow-[0_20px_40px_-24px_rgba(23,28,32,0.35)] ring-1 ring-line transition-shadow focus-within:ring-2 focus-within:ring-ink">
-                <span className="sr-only">Search spare parts</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="size-5 shrink-0 text-steel" aria-hidden>
-                  <circle cx="11" cy="11" r="7" />
-                  <path d="m20 20-3.5-3.5" strokeLinecap="round" />
-                </svg>
-                <input
-                  type="search"
-                  name="q"
-                  placeholder="Search part, SKU or spec…"
-                  className="h-11 min-w-0 flex-1 bg-transparent text-[15px] text-ink outline-none placeholder:text-steel/80 [&::-webkit-search-cancel-button]:hidden"
-                />
-                <button type="submit" className="btn-primary group shrink-0 px-5! py-2.5!">
-                  Shop spare parts
-                  <Icons.arrow className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </button>
-              </label>
-            </form>
-
-            <div className="fade-up mt-4 flex flex-wrap items-center gap-2 text-sm" style={d(580)}>
-              <span className="text-steel">Popular:</span>
-              {popular.map((c) => (
-                <Link
-                  key={c}
-                  href={`/products?category=${encodeURIComponent(c)}`}
-                  className="rounded-md bg-white/70 px-3 py-1.5 font-medium text-ink/75 ring-1 ring-line transition-colors hover:bg-white hover:text-ink"
-                >
-                  {c}
-                </Link>
-              ))}
+            <div className="fade-up mt-8 flex flex-wrap gap-3" style={d(500)}>
+              <Link href="/products" className="btn-primary group px-6! py-3.5!">
+                Shop spare parts
+                <Icons.arrow className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
               <a
                 href={whatsappHref("Hi JEC, I need a forklift spare part.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group ml-1 inline-flex items-center gap-1.5 font-medium text-brand hover:text-ink"
+                className="btn-light px-6! py-3.5!"
               >
                 WhatsApp a part number
-                <Icons.arrow className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
               </a>
             </div>
 
@@ -160,8 +128,8 @@ export default function Home() {
           <p className="eyebrow">Brands we stock</p>
           <p className="text-sm text-steel">Genuine and OEM-equivalent parts for every major forklift brand</p>
         </div>
-        <div className="container-x mt-5">
-          <div className="marquee relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_5%,#000_95%,transparent)]">
+        <div className="mt-5">
+          <div className="marquee relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_4%,#000_96%,transparent)]">
             <div className="animate-marquee flex w-max">
               {[0, 1].map((dup) => (
                 <ul key={dup} className="flex shrink-0 items-center gap-4 pr-4" aria-hidden={dup === 1}>
