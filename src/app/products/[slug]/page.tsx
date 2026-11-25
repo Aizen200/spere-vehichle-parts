@@ -61,7 +61,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
 
         <div>
           <div className="fade-up flex flex-wrap items-center gap-3" style={d(80)}>
-            <span className="eyebrow">{product.category}</span>
+            <span className="text-sm text-steel">{product.category}</span>
           </div>
           <h1 className="fade-up mt-4 text-5xl leading-[0.9] text-ink sm:text-6xl" style={d(140)}>
             {product.name}
@@ -117,8 +117,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
       <section className="border-t border-line bg-paper py-14 lg:py-16">
         <div className="container-x">
           <Reveal>
-            <p className="eyebrow">Related</p>
-            <h2 className="mt-4 text-4xl text-ink sm:text-5xl">You may also need</h2>
+            <h2 className="text-4xl text-ink sm:text-5xl">You may also need</h2>
           </Reveal>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {related.map((p, i) => (

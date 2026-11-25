@@ -51,4 +51,13 @@ export const Icons = {
   mail: (p: P) => (
     <svg {...base} {...p}><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
   ),
+  chat: (p: P) => (
+    <svg {...base} {...p}><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19.1z" /><path d="M9 10h6M9 13h4" /></svg>
+  ),
 };
+
+/** Icons for each entry in `services` (src/data/site.ts), in the same order. */
+export const serviceIcons = [
+  Icons.parts, Icons.workshop, Icons.rentals, Icons.field, Icons.maintenance,
+  Icons.training, Icons.fleet, Icons.load, Icons.operator,
+];

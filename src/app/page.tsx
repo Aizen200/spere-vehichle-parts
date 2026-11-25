@@ -124,8 +124,7 @@ export default function Home() {
 
       {/* BRANDS */}
       <section id="brands" aria-label="Forklift brands we stock" className="scroll-mt-20 py-10 sm:py-12">
-        <div className="container-x flex flex-col justify-between gap-2 sm:flex-row sm:items-end">
-          <p className="eyebrow">Brands we stock</p>
+        <div className="container-x">
           <p className="text-sm text-steel">Genuine and OEM-equivalent parts for every major forklift brand</p>
         </div>
         <div className="mt-5">
@@ -180,8 +179,7 @@ export default function Home() {
           </Reveal>
           <div className="px-6 pb-8 sm:px-10 lg:py-12 lg:pr-12 lg:pl-0">
             <Reveal>
-              <p className="eyebrow">Who we are</p>
-              <h2 className="mt-4 text-4xl text-ink sm:text-5xl lg:text-6xl">
+              <h2 className="text-4xl text-ink sm:text-5xl lg:text-6xl">
                 More than parts.
                 <br />
                 <span className="text-steel">We look after your whole fleet.</span>
@@ -224,7 +222,7 @@ export default function Home() {
 
       {/* SHOP BY SYSTEM */}
       <section className="container-x py-10 sm:py-14">
-        <SectionHead eyebrow="Find it fast" title="Shop by system" link={{ href: "/products", label: "View all parts" }} />
+        <SectionHead title="Shop by system" link={{ href: "/products", label: "View all parts" }} />
         <div className="mt-8">
           <CategoryShowcase />
         </div>
@@ -239,8 +237,7 @@ export default function Home() {
         <div className="container-x">
           <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
             <Reveal className="max-w-3xl">
-              <p className="eyebrow text-white/60!">Value-added services</p>
-              <h2 className="mt-4 text-4xl sm:text-5xl lg:text-6xl">One partner. Nine ways to keep your fleet moving.</h2>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl">One partner. Nine ways to keep your fleet moving.</h2>
             </Reveal>
             <Reveal delay={100}>
               <p className="max-w-sm text-white/60">Tailor-made support for every stage of your material handling operation.</p>
@@ -259,8 +256,7 @@ export default function Home() {
             <span aria-hidden className="pointer-events-none absolute -right-2 -bottom-8 -z-10 font-display text-[11rem] leading-none font-bold text-ink/[0.04]">
               ISO
             </span>
-            <p className="eyebrow">Committed to excellence</p>
-            <h3 className="mt-4 font-display text-4xl leading-[0.95] font-bold text-ink uppercase sm:text-5xl">
+            <h3 className="font-display text-4xl leading-[0.95] font-bold text-ink uppercase sm:text-5xl">
               Reliability is paramount.
             </h3>
             <p className="mt-5 leading-relaxed text-steel">
@@ -282,8 +278,7 @@ export default function Home() {
             <Image src={photos.hero} alt="" fill sizes="(min-width: 1024px) 50vw, 100vw" className="-z-20 object-cover opacity-40" />
             <div className="absolute inset-0 -z-10 bg-linear-to-t from-ink via-ink/85 to-ink/40" />
             <div className="flex flex-1 flex-col p-7 sm:p-10">
-              <p className="eyebrow text-white/60!">Customised rentals</p>
-              <h3 className="mt-4 font-display text-4xl leading-[0.95] font-bold uppercase sm:text-5xl">
+              <h3 className="font-display text-4xl leading-[0.95] font-bold uppercase sm:text-5xl">
                 Rent the fleet. Skip the hassle.
               </h3>
               <p className="mt-5 leading-relaxed text-white/70">
@@ -303,8 +298,7 @@ export default function Home() {
       <section className="container-x py-10 sm:py-14">
         <div className="grid gap-6 lg:grid-cols-[1fr_1.2fr] lg:items-end">
           <Reveal>
-            <p className="eyebrow">Our clients</p>
-            <h2 className="mt-4 text-4xl text-ink sm:text-5xl lg:text-6xl">
+            <h2 className="text-4xl text-ink sm:text-5xl lg:text-6xl">
               Trusted by <span className="text-brand"><CountUp value={company.clients} /></span> industrial leaders.
             </h2>
           </Reveal>
@@ -343,8 +337,7 @@ export default function Home() {
           <div className="grid gap-12 px-6 py-10 sm:px-10 sm:py-14 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
             <div>
               <Reveal>
-                <p className="eyebrow text-white/60!">Get a quote</p>
-                <h2 className="mt-4 text-5xl leading-[0.92] sm:text-6xl">
+                <h2 className="text-5xl leading-[0.92] sm:text-6xl">
                   Need a part?
                   <br />
                   <span className="text-white/45">We&apos;ve got it.</span>
@@ -387,19 +380,16 @@ export default function Home() {
 }
 
 function SectionHead({
-  eyebrow,
   title,
   link,
 }: {
-  eyebrow: string;
   title: string;
   link?: { href: string; label: string };
 }) {
   return (
     <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
       <Reveal>
-        <p className="eyebrow">{eyebrow}</p>
-        <h2 className="mt-4 max-w-2xl text-4xl text-ink sm:text-5xl lg:text-6xl">{title}</h2>
+        <h2 className="max-w-2xl text-4xl text-ink sm:text-5xl lg:text-6xl">{title}</h2>
       </Reveal>
       {link && (
         <Reveal delay={150}>

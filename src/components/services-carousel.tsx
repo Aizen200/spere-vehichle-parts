@@ -2,12 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { services } from "@/data/site";
-import { Icons } from "./icons";
-
-const serviceIcons = [
-  Icons.parts, Icons.workshop, Icons.rentals, Icons.field, Icons.maintenance,
-  Icons.training, Icons.fleet, Icons.load, Icons.operator,
-];
+import { serviceIcons } from "./icons";
 
 const AUTOPLAY_MS = 3500;
 const n = services.length;
