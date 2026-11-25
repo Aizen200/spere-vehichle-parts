@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, Inter_Tight } from "next/font/google";
+import { Barlow_Condensed, Geist } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
-const interTight = Inter_Tight({
-  variable: "--font-inter-tight",
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const condensed = Barlow_Condensed({
+  variable: "--font-condensed",
   subsets: ["latin"],
+  weight: ["600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -26,13 +26,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${interTight.variable} ${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${geist.variable} ${condensed.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col font-sans">
         <noscript>
           <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
         </noscript>
         <Header />
-        <main className="flex-1">{children}</main>
+        {/* The page lifts off the footer, which is revealed underneath on tall desktop screens */}
+        <main className="relative z-10 flex-1 bg-white shadow-[0_30px_60px_-20px_rgba(0,0,0,0.45)] lg:rounded-b-[2rem]">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

@@ -23,7 +23,7 @@ function SpecSheet({ view, product, mode }: { view: GalleryView; product: Produc
         </div>
       )}
       <div className={`relative flex flex-1 items-center justify-center ${thumb ? "p-[14%]" : "p-[8%]"}`}>
-        <div className="relative aspect-square h-full max-h-full overflow-hidden rounded-sm ring-1 ring-white/15">
+        <div className="relative aspect-square h-full max-h-full overflow-hidden rounded-md ring-1 ring-white/15">
           <Image src={view.src} alt="" fill sizes={thumb ? "80px" : "40vw"} className="object-cover" />
           {/* corner ticks */}
           {!thumb &&
@@ -109,7 +109,7 @@ export function ProductGallery({ product, views }: { product: Product; views: Ga
   };
 
   const navBtn =
-    "flex h-10 w-10 items-center justify-center rounded-sm bg-white/90 text-ink shadow-sm ring-1 ring-ink/10 backdrop-blur transition-colors hover:bg-ink hover:text-white";
+    "flex h-10 w-10 items-center justify-center rounded-md bg-white/90 text-ink shadow-sm ring-1 ring-ink/10 backdrop-blur transition-colors hover:bg-ink hover:text-white";
 
   return (
     <div className="flex flex-col-reverse gap-3 sm:flex-row sm:gap-4">
@@ -129,7 +129,7 @@ export function ProductGallery({ product, views }: { product: Product; views: Ga
             onMouseEnter={() => setIndex(i)}
             onFocus={() => setIndex(i)}
             onClick={() => setIndex(i)}
-            className={`group relative aspect-square w-16 shrink-0 overflow-hidden rounded-sm border bg-mist transition-all sm:w-full ${
+            className={`group relative aspect-square w-16 shrink-0 overflow-hidden rounded-md border bg-mist transition-all sm:w-full ${
               i === index ? "border-ink ring-2 ring-ink ring-offset-2 ring-offset-paper" : "border-line hover:border-ink/40"
             }`}
           >
@@ -141,7 +141,7 @@ export function ProductGallery({ product, views }: { product: Product; views: Ga
       {/* Main stage */}
       <div className="relative flex-1">
         <div
-          className={`relative aspect-square overflow-hidden rounded-sm border border-line bg-mist cursor-pointer`}
+          className={`relative aspect-square overflow-hidden rounded-lg border border-line bg-mist cursor-pointer`}
           onClick={() => setOpen(true)}
           {...swipe}
         >
@@ -155,7 +155,7 @@ export function ProductGallery({ product, views }: { product: Product; views: Ga
             </div>
           ))}
 
-          <span className="pointer-events-none absolute right-3 bottom-3 rounded-sm bg-ink/80 px-2 py-0.5 font-mono text-[11px] text-white sm:hidden">
+          <span className="pointer-events-none absolute right-3 bottom-3 rounded-md bg-ink/80 px-2 py-0.5 font-mono text-[11px] text-white sm:hidden">
             {index + 1}/{views.length}
           </span>
         </div>
@@ -191,14 +191,14 @@ export function ProductGallery({ product, views }: { product: Product; views: Ga
               type="button"
               onClick={() => setOpen(false)}
               aria-label="Close"
-              className="flex h-10 w-10 items-center justify-center rounded-sm text-2xl leading-none text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+              className="flex h-10 w-10 items-center justify-center rounded-md text-2xl leading-none text-white/70 transition-colors hover:bg-white/10 hover:text-white"
             >
               ×
             </button>
           </div>
 
           <div className="relative flex min-h-0 flex-1 items-center justify-center px-4 sm:px-20" {...swipe}>
-            <div className="relative aspect-square h-full max-h-full w-auto max-w-full overflow-hidden rounded-sm">
+            <div className="relative aspect-square h-full max-h-full w-auto max-w-full overflow-hidden rounded-md">
               <View view={current} product={product} mode="lightbox" />
             </div>
             <button type="button" aria-label="Previous image" onClick={() => go(-1)} className={`absolute left-4 hidden sm:flex ${navBtn}`}>
@@ -216,7 +216,7 @@ export function ProductGallery({ product, views }: { product: Product; views: Ga
                 type="button"
                 aria-label={v.label}
                 onClick={() => setIndex(i)}
-                className={`relative aspect-square w-14 shrink-0 overflow-hidden rounded-sm bg-mist transition-opacity ${
+                className={`relative aspect-square w-14 shrink-0 overflow-hidden rounded-md bg-mist transition-opacity ${
                   i === index ? "ring-2 ring-brand" : "opacity-50 hover:opacity-100"
                 }`}
               >

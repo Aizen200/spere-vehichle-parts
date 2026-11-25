@@ -14,7 +14,7 @@ export function ProductBrowser() {
   const pathname = usePathname();
   const requested = searchParams.get("category");
   const active = requested && categories.includes(requested) ? requested : ALL;
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(() => searchParams.get("q") ?? "");
   const inputRef = useRef<HTMLInputElement>(null);
 
   const counts = useMemo(() => {
@@ -60,7 +60,7 @@ export function ProductBrowser() {
   const count = visible.length;
 
   return (
-    <div className="grid gap-10 lg:grid-cols-[17.5rem_1fr] lg:gap-10">
+    <div className="grid gap-8 lg:grid-cols-[16rem_1fr] lg:gap-10">
       {/* Category list */}
       <aside className="lg:sticky lg:top-24 lg:self-start">
         <label className="group relative flex items-center">
@@ -75,7 +75,7 @@ export function ProductBrowser() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search part, SKU or spec…"
-            className="h-13 w-full rounded-lg border border-line bg-white pr-12 pl-11 text-[15px] transition-all outline-none placeholder:text-steel/80 focus:border-ink focus:ring-1 focus:ring-ink [&::-webkit-search-cancel-button]:hidden"
+            className="h-12 w-full rounded-md border border-line bg-white pr-12 pl-11 text-[15px] transition-all outline-none placeholder:text-steel/80 focus:border-ink focus:ring-1 focus:ring-ink [&::-webkit-search-cancel-button]:hidden"
           />
           {query ? (
             <button
@@ -98,7 +98,7 @@ export function ProductBrowser() {
         <ul
           role="tablist"
           aria-label="Filter by category"
-          className="mt-4 flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] lg:flex-col lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden"
+          className="no-scrollbar mt-3 flex gap-2 overflow-x-auto pb-1 lg:flex-col lg:gap-1 lg:overflow-visible lg:pb-0"
         >
           {[ALL, ...categories].map((c) => {
             const selected = active === c;
@@ -109,8 +109,8 @@ export function ProductBrowser() {
                   role="tab"
                   aria-selected={selected}
                   onClick={() => setCategory(c)}
-                  className={`flex w-full items-center justify-between gap-4 h-13 rounded-lg px-4 text-left text-[15px] font-medium whitespace-nowrap transition-colors duration-200 lg:px-5 ${
-                    selected ? "bg-ink text-white" : "bg-mist text-ink hover:bg-line"
+                  className={`flex w-full items-center justify-between gap-4 rounded-md px-4 py-2.5 text-left text-[15px] font-medium whitespace-nowrap transition-colors duration-200 ${
+                    selected ? "bg-ink text-white" : "bg-mist text-ink/75 hover:text-ink"
                   }`}
                 >
                   <span>{c}</span>
@@ -136,7 +136,7 @@ export function ProductBrowser() {
                 setQuery("");
                 setCategory(ALL);
               }}
-              className="group inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-ink hover:text-brand"
+              className="group inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-brand hover:text-ink"
             >
               See all {products.length}
               <Icons.arrow className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -145,7 +145,7 @@ export function ProductBrowser() {
         </div>
 
         {count > 0 ? (
-          <div className="mt-4 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {visible.map((p, i) => (
               <div
                 key={`${active}-${p.slug}`}
@@ -157,8 +157,8 @@ export function ProductBrowser() {
             ))}
           </div>
         ) : (
-          <div className="mt-4 rounded-2xl border border-line bg-mist/70 p-12 text-center">
-            <p className="font-display text-2xl font-semibold tracking-tight">No parts match your search</p>
+          <div className="mt-4 rounded-lg bg-mist p-12 text-center ring-1 ring-line">
+            <p className="font-display text-3xl font-bold uppercase">No parts match your search</p>
             <p className="mt-2 text-steel">
               We stock far more than what&apos;s listed here. Call us with your part number.
             </p>

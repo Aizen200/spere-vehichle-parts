@@ -68,7 +68,7 @@ export function ServicesCarousel() {
       onBlur={() => setPaused(false)}
     >
       <div
-        className="overflow-hidden [--w:84%] sm:[--w:46%] lg:[--w:29.4%]"
+        className="overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_6%,#000_94%,transparent)] [--w:84%] sm:[--w:46%] lg:[--w:29.4%]"
         onPointerDown={onPointerDown}
         onPointerUp={onPointerUp}
         onPointerCancel={() => (dragStart.current = null)}
@@ -87,13 +87,15 @@ export function ServicesCarousel() {
                 className="shrink-0 basis-(--w) px-2.5 sm:px-4"
                 aria-hidden={Math.abs(k - index) > 1}
               >
-                <div className="group relative flex h-full min-h-[22rem] flex-col items-center justify-center overflow-hidden border border-white/15 bg-ink/60 px-8 py-12 text-center backdrop-blur-[2px] transition-colors duration-500 select-none hover:bg-graphite">
-                  <span className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-brand transition-transform duration-700 group-hover:scale-x-100" />
-                  <span className="flex h-16 w-16 items-center justify-center rounded-sm border border-white/15 text-brand transition-all duration-500 group-hover:border-brand group-hover:bg-brand group-hover:text-white">
-                    <Icon className="h-7 w-7" />
+                <div className="group relative isolate flex h-full min-h-[20rem] flex-col overflow-hidden rounded-lg bg-white/[0.04] p-7 ring-1 ring-white/10 transition-colors duration-300 select-none hover:bg-white/[0.07] hover:ring-brand/50">
+                  <span aria-hidden className="pointer-events-none absolute -top-5 -right-1 -z-10 font-display text-[8rem] leading-none font-bold text-white/[0.04] transition-colors duration-300 group-hover:text-brand/20">
+                    {String(s.i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="mt-7 font-display text-xl font-semibold tracking-tight sm:text-2xl">{s.title}</h3>
-                  <p className="mt-3 max-w-xs leading-relaxed text-white/55">{s.body}</p>
+                  <span className="grid size-12 place-items-center rounded-md bg-brand text-white transition-transform duration-300 group-hover:-rotate-6">
+                    <Icon className="size-6" />
+                  </span>
+                  <h3 className="mt-auto pt-10 font-display text-3xl leading-none font-bold uppercase">{s.title}</h3>
+                  <p className="mt-3 max-w-xs leading-relaxed text-white/60">{s.body}</p>
                 </div>
               </div>
             );
@@ -102,7 +104,7 @@ export function ServicesCarousel() {
       </div>
 
       {/* Tabs */}
-      <div className="mt-12 flex flex-wrap items-center justify-center gap-2.5" role="tablist" aria-label="Services">
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-2" role="tablist" aria-label="Services">
         {services.map((s, i) => (
           <button
             key={s.title}
@@ -114,8 +116,8 @@ export function ServicesCarousel() {
             className="group py-3"
           >
             <span
-              className={`block h-1 w-8 rounded-full transition-all duration-500 sm:w-10 ${
-                i === active ? "bg-white" : "bg-white/25 group-hover:bg-white/50"
+              className={`block h-1 transition-all duration-500 ${
+                i === active ? "w-10 bg-brand" : "w-6 bg-white/25 group-hover:bg-white/50"
               }`}
             />
           </button>

@@ -40,8 +40,8 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
 
   return (
     <>
-      <nav aria-label="Breadcrumb" className="border-b border-line bg-white">
-        <ol className="mx-auto flex max-w-7xl flex-wrap items-center gap-2 px-4 py-3.5 text-sm text-steel">
+      <nav aria-label="Breadcrumb" className="border-b border-line bg-paper">
+        <ol className="container-x flex flex-wrap items-center gap-2 py-3.5 text-sm text-steel">
           <li><Link href="/" className="transition-colors hover:text-ink">Home</Link></li>
           <li aria-hidden>/</li>
           <li><Link href="/products" className="transition-colors hover:text-ink">Spare parts</Link></li>
@@ -54,20 +54,20 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
         </ol>
       </nav>
 
-      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-10 lg:grid-cols-2 lg:gap-16 lg:py-16">
+      <section className="container-x grid gap-10 py-10 lg:grid-cols-2 lg:gap-16 lg:py-14">
         <div className="fade-up lg:sticky lg:top-28 lg:self-start" style={d(0)}>
           <ProductGallery product={product} views={galleryFor(product, photos.fleet)} />
         </div>
 
         <div>
           <div className="fade-up flex flex-wrap items-center gap-3" style={d(80)}>
-            <span className="text-sm text-steel">{product.category}</span>
+            <span className="eyebrow">{product.category}</span>
           </div>
-          <h1 className="fade-up mt-4 font-display text-4xl leading-[1.05] font-semibold tracking-[-0.03em] sm:text-5xl" style={d(140)}>
+          <h1 className="fade-up mt-4 text-5xl leading-[0.9] text-ink sm:text-6xl" style={d(140)}>
             {product.name}
           </h1>
-          <p className="fade-up mt-3 font-mono text-sm text-steel" style={d(180)}>SKU {product.sku}</p>
-          <p className="fade-up mt-6 text-lg leading-relaxed text-ink/70" style={d(300)}>{product.summary}</p>
+          <p className="fade-up mt-4 inline-block rounded-md bg-mist px-2.5 py-1 font-mono text-xs text-ink/70 ring-1 ring-line" style={d(180)}>SKU {product.sku}</p>
+          <p className="fade-up mt-6 text-lg leading-relaxed text-steel" style={d(300)}>{product.summary}</p>
 
           <div className="fade-up mt-8 flex flex-col gap-3 sm:flex-row" style={d(360)}>
             <a href={whatsappHref(enquiry)} target="_blank" rel="noopener noreferrer" className="btn-primary group flex-1">
@@ -88,18 +88,20 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
 
           <ul className="fade-up mt-10 grid gap-3 sm:grid-cols-3" style={d(440)}>
             {perks.map(({ icon: Icon, label }) => (
-              <li key={label} className="flex items-center gap-3 rounded-sm border border-line bg-white px-4 py-3.5 text-sm font-medium">
-                <Icon className="h-5 w-5 shrink-0 text-ink/60" />
+              <li key={label} className="flex items-center gap-3 rounded-lg bg-mist px-4 py-3.5 text-sm font-medium ring-1 ring-line">
+                <span className="grid size-8 shrink-0 place-items-center rounded-md bg-brand text-white">
+                  <Icon className="size-4" />
+                </span>
                 {label}
               </li>
             ))}
           </ul>
 
           <div className="fade-up mt-12" style={d(500)}>
-            <h2 className="font-display text-2xl font-semibold tracking-tight">Specifications</h2>
-            <dl className="mt-5 divide-y divide-line overflow-hidden rounded-sm border border-line bg-white">
+            <h2 className="text-3xl text-ink">Specifications</h2>
+            <dl className="mt-5 divide-y divide-line overflow-hidden rounded-lg bg-white ring-1 ring-line">
               {product.specs.map((s) => (
-                <div key={s.label} className="grid grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-4 px-5 py-3.5 transition-colors hover:bg-paper">
+                <div key={s.label} className="grid grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-4 px-5 py-3.5 transition-colors even:bg-paper hover:bg-brand-tint">
                   <dt className="text-sm text-steel">{s.label}</dt>
                   <dd className="text-sm font-medium">{s.value}</dd>
                 </div>
@@ -112,13 +114,13 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
         </div>
       </section>
 
-      <section className="border-t border-line bg-mist/60 py-20">
-        <div className="mx-auto max-w-7xl px-4">
+      <section className="border-t border-line bg-paper py-14 lg:py-16">
+        <div className="container-x">
           <Reveal>
             <p className="eyebrow">Related</p>
-            <h2 className="mt-4 font-display text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">You may also need</h2>
+            <h2 className="mt-4 text-4xl text-ink sm:text-5xl">You may also need</h2>
           </Reveal>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {related.map((p, i) => (
               <Reveal key={p.slug} delay={i * 90} className="h-full">
                 <ProductCard product={p} />
